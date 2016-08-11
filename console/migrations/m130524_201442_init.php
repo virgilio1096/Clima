@@ -50,7 +50,7 @@ class m130524_201442_init extends Migration
             'temperaturaAire' => $this->double(),
             
         ], $tableOptions);        
-            $this->addForeignKey('FK_prom_proy', 'ubicaClima', 'id', 'infoClima', 'ubi');
+            $this->addForeignKey('FK_prom_proy', 'infoClima', 'ubi', 'ubicaClima', 'id');
         
         
     }
@@ -58,7 +58,7 @@ class m130524_201442_init extends Migration
 
     public function safeDown()
     {
-        $this ->dropForeignKey('FK_prom_proy', 'ubicaClima');
+        $this ->dropForeignKey('FK_prom_proy', 'infoclima');
         $this->dropTable('{{%user}}');
          $this->dropTable('{{%ubicaClima}}');
           $this->dropTable('{{%infoClima}}');

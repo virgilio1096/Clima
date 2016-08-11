@@ -19,6 +19,16 @@ class UserController extends Controller {
      */
     public function behaviors() {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['_form', 'search', 'create', 'index', 'update', 'view'],
+                        'allow' =>true,
+                        'roles' =>['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

@@ -28,21 +28,29 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'sistema de informacion para la agricultura',
+        'brandLabel' => 'Sistema De Informacion Para La Agricultura',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'subir archivo', 'url' => ['/estadoclima/index']],
-        ['label' => 'usuarios', 'url' => ['/user/index']],
-        ['label' => 'consultar clima', 'url' => ['/estadoclima/index_1']],
-    ];
+//    $menuItems = [
+//        ['label' => 'Home', 'url' => ['/site/index']],
+//        ];
+   
+        
+        
+    
     if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'consultar clima', 'url' => ['/conclima/index']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+     
+            
     } else {
+        $menuItems[] = ['label' => 'subir archivo', 'url' => ['/ubicaclima/index']];
+        $menuItems[] = ['label' => 'usuarios', 'url' => ['/user/index']];
+        $menuItems[] = ['label' => 'consultar clima', 'url' => ['/conclima/index']];
+        
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
